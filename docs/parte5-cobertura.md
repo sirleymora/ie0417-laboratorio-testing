@@ -113,7 +113,7 @@ string_utils.cpp:24:    std::string reversed = normalized;
 string_utils.cpp:25:    std::reverse(reversed.begin(), reversed.end());
 ```
 
-Todas son ramas con bloque `e0`, que `lcov` usa para los caminos de excepción que el compilador genera alrededor de operaciones que podrían lanzar un error, como construir un `std::invalid_argument` o crear y copiar un `std::string` (por ejemplo, un `std::bad_alloc` si no hay memoria). Ninguna es una decisión de la lógica del programa: los `if`, los rangos de `letter_grade`, el vector vacío y la división entre cero sí están cubiertos. Con pruebas normales no se pueden recorrer estos caminos porque habría que simular que el sistema se queda sin memoria.
+Todas son ramas con bloque `e0`, que `lcov` usa para los caminos de excepción que el compilador genera alrededor de operaciones que podrían lanzar un error, como construir un `std::invalid_argument` o crear y copiar un `std::string` (por ejemplo, un `std::bad_alloc` si no hay memoria). La de `string_utils.cpp:25` (`std::reverse`) no lanza por sí misma: es el camino de limpieza que el compilador asocia a esa zona (destruir `reversed` si ocurre una excepción). Ninguna es una decisión de la lógica del programa: los `if`, los rangos de `letter_grade`, el vector vacío y la división entre cero sí están cubiertos. Con pruebas normales no se pueden recorrer estos caminos porque habría que simular que el sistema se queda sin memoria.
 
 ## Evidencia del reporte HTML
 
