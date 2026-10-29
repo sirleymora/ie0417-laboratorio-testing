@@ -1,6 +1,11 @@
-# Laboratorio: pruebas de software con Google Test, cobertura y GitHub Actions
-
-Laboratorio del curso IE0417 - Diseño de software para ingeniería. Proyecto en C++ con pruebas unitarias en Google Test, medición de cobertura con `gcov`/`lcov` y ejecución automática de las pruebas con GitHub Actions.
+| | |
+|---|---|
+| **Universidad** | Universidad de Costa Rica (UCR) |
+| **Curso** | IE0417 - Diseño de software para ingeniería |
+| **Laboratorio** | Pruebas de software con Google Test, cobertura y GitHub Actions |
+| **Estudiante** | Sirley Mora Chavarría |
+| **Carnet** | C15059 |
+---
 
 ## Estructura
 
