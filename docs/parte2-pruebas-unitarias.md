@@ -6,7 +6,7 @@ Se crearon tres módulos pequeños en C++ que luego se verifican con pruebas uni
 
 ## Módulos creados
 
-| Módulo | Archivo `.h` (declaraciones) | Archivo `.cpp` (implementación) |
+| Módulo | Archivo `.h` | Archivo `.cpp` |
 |---|---|---|
 | Calculadora | `include/calculator.h` | `src/calculator.cpp` |
 | Utilidades de texto | `include/string_utils.h` | `src/string_utils.cpp` |
@@ -24,7 +24,7 @@ Los encabezados le dicen al compilador y a las pruebas qué funciones existen, s
 
 - `calculator.cpp`: implementa las operaciones aritméticas. `divide` lanza `std::invalid_argument` si el divisor es cero, e `is_even` revisa si el residuo de dividir entre 2 es 0.
 - `string_utils.cpp`: `to_uppercase` convierte cada carácter a mayúscula, `is_palindrome` ignora espacios y mayúsculas y compara el texto con su reverso, y `count_vowels` cuenta las letras a, e, i, o, u sin distinguir mayúsculas.
-- `grade_utils.cpp`: `average` calcula el promedio (lanza excepción si la lista está vacía), `is_passing` devuelve verdadero con nota de 70 o más, y `letter_grade` convierte la nota a letra A, B, C, D o F (lanza excepción si la nota no está entre 0 y 100).
+- `grade_utils.cpp`: `average` calcula el promedio, `is_passing` devuelve verdadero con nota de 70 o más, y `letter_grade` convierte la nota a letra A, B, C, D o F, lanza excepción si la nota no está entre 0 y 100.
 
 ## Casos normales, casos borde y casos inválidos
 
@@ -42,8 +42,7 @@ Los encabezados le dicen al compilador y a las pruebas qué funciones existen, s
 
 ### Observación
 
-`count_vowels` solo reconoce vocales sin tilde, por lo que una letra como "é" no se cuenta. Es una limitación que se podría probar y documentar más adelante.
-
+`count_vowels` solo reconoce vocales sin tilde, por lo que una letra como "é" no se cuenta. 
 ---
 
 # Parte 3: primeras pruebas unitarias con Google Test
@@ -263,16 +262,16 @@ Verifica el promedio de tres notas. Se usa `EXPECT_DOUBLE_EQ` porque el resultad
 ## Preguntas de reflexión
 
 **1. ¿Qué significa que una prueba pase?**
-Que todas las verificaciones de la prueba se cumplieron: la función devolvió lo que se esperaba (o lanzó la excepción esperada). Significa que, para ese caso concreto, el código se comporta como se definió.
+Que todas las verificaciones de la prueba se cumplieron: la función devolvió lo que se esperaba. Significa que para ese caso concreto, el código se comporta como se definió.
 
 **2. ¿Qué significa que una prueba falle?**
-Que al menos una verificación no se cumplió. Puede haber un error en el código, o que la prueba esté mal escrita o desactualizada. Google Test muestra qué valor se esperaba y cuál se obtuvo.
+Que al menos una verificación no se cumplió. Puede haber un error en el código o que la prueba esté mal escrita o desactualizada. Google Test muestra qué valor se esperaba y cuál se obtuvo.
 
 **3. ¿Qué diferencia hay entre probar una función manualmente y probarla con Google Test?**
 Manualmente hay que ejecutar el programa, ingresar los datos y revisar la salida a ojo cada vez. Con Google Test los casos quedan escritos en código, se ejecutan todos con un comando, se comparan contra el valor esperado automáticamente y se pueden repetir después de cada cambio.
 
 **4. ¿Por qué las pruebas unitarias deben ser rápidas?**
-Porque se ejecutan muy seguido, después de cada cambio. Las 25 pruebas tardaron 31 ms; si fueran lentas, se dejarían de ejecutar y los errores se detectarían tarde.
+Porque se ejecutan muy seguido, después de cada cambio. Las 25 pruebas tardaron 31 ms, si fueran lentas se dejarían de ejecutar y los errores se detectarían tarde.
 
 **5. ¿Por qué las pruebas unitarias deben ser deterministas?**
 Porque si una prueba da resultados distintos con el mismo código, no se puede saber si un fallo es un error real o solo mala suerte. Una prueba determinista permite confiar en el resultado y reproducir cualquier fallo.
@@ -367,7 +366,7 @@ Cuando las verificaciones son independientes entre sí y conviene ver todos los 
 Cuando el resto de la prueba depende de que una condición previa se cumpla, por ejemplo que un puntero no sea nulo, que un vector tenga elementos antes de acceder a ellos o que un divisor no sea cero.
 
 **3. ¿Qué podría pasar si se usa `EXPECT_` cuando en realidad se necesitaba detener la prueba?**
-La prueba seguiría ejecutándose con datos inválidos, y podría causar fallos en cadena, excepciones o incluso un acceso inválido a memoria que cierre el programa de pruebas. El reporte tendría mucho ruido y sería difícil ver cuál fue el error original.
+La prueba seguiría ejecutándose con datos inválidos, y podría causar fallos en cadena, excepciones o incluso un acceso inválido a memoria que cierre el programa de pruebas. 
 
 **4. ¿Qué podría pasar si se usa `ASSERT_` en exceso?**
 Cada fallo detendría la prueba y ocultaría los demás, de modo que habría que corregir y volver a ejecutar varias veces para descubrir todos los errores de una prueba que tenía varias verificaciones independientes.
