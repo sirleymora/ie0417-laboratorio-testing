@@ -1,4 +1,3 @@
-<div align="center">
 
 # Universidad de Costa Rica 
 
@@ -6,10 +5,10 @@
 
 ## Laboratorio: pruebas de software con Google Test, cobertura y GitHub Actions
 
-**Estudiante:** Sirley Mora Chavarría<br>
+**Estudiante:** Sirley Mora Chavarría
 **Carnet:** C15059
 
-</div>
+
 
 ---
 
