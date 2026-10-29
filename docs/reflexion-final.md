@@ -135,3 +135,6 @@ Las pruebas unitarias con Google Test. Al romper `is_even` a propósito se vio c
 
 **13. ¿Qué parte le pareció más difícil?**
 La parte de GitHub Actions. La dificultad estuvo sobre todo en conectar el repositorio con GitHub: el `push` fue rechazado con un error 403 porque Git usaba las credenciales de otra cuenta, y hubo que crear un token de acceso personal con los permisos `repo` y `workflow`. Una vez que el código estuvo subido, el workflow sí se ejecutó correctamente.
+
+**14. ¿Cómo aplicaría pruebas automatizadas en un proyecto futuro?**
+Aplicaría los conceptos aprendidos en este laboratorio (pruebas unitarias, casos borde, medición de cobertura e integración continua) como una forma rápida y segura de verificar el código, tanto en los proyectos de la carrera como más adelante en el ámbito laboral. Escribir las pruebas junto con el código y ejecutarlas automáticamente en cada cambio permite detectar los errores a tiempo y modificar el código con confianza.
