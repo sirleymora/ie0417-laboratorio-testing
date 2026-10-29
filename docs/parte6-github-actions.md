@@ -61,7 +61,7 @@ Evita que un cambio que rompe el proyecto pase desapercibido y se mezcle con el 
 Porque es más barato corregir un error antes de que llegue a la rama principal que después, cuando otras personas ya trabajaron encima de ese código.
 
 **4. ¿Qué información proporciona GitHub Actions cuando un workflow falla?**
-Muestra qué paso falló, el registro completo de la salida de ese paso (con el mensaje de error o el reporte de Google Test), el commit que lo causó, quién lo subió y cuánto tardó.
+Muestra qué paso falló, el registro completo de la salida de ese paso, el commit que lo causó, quién lo subió y cuánto tardó.
 
 **5. ¿Cómo ayuda CI a mejorar la colaboración en equipo?**
 Da una verificación común e imparcial para todos: un cambio con el check verde cumple lo mínimo acordado, y uno con X roja se corrige antes de revisarlo. Todos ven el mismo resultado, y se reducen los conflictos y las sorpresas al integrar.
