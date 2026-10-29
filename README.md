@@ -1,10 +1,16 @@
-| | |
-|---|---|
-| **Universidad** | Universidad de Costa Rica (UCR) |
-| **Curso** | IE0417 - Diseño de software para ingeniería |
-| **Laboratorio** | Pruebas de software con Google Test, cobertura y GitHub Actions |
-| **Estudiante** | Sirley Mora Chavarría |
-| **Carnet** | C15059 |
+<div align="center">
+
+# Universidad de Costa Rica 
+
+### IE0417 - Diseño de software para ingeniería
+
+## Laboratorio: pruebas de software con Google Test, cobertura y GitHub Actions
+
+**Estudiante:** Sirley Mora Chavarría<br>
+**Carnet:** C15059
+
+</div>
+
 ---
 
 ## Estructura
