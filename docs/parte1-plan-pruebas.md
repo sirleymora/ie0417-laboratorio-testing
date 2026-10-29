@@ -17,11 +17,11 @@ cd laboratorio-testing
 
 ### Archivo creado
 
-`CMakeLists.txt`, en la raíz de `laboratorio-testing`. Define el estándar C++17, una opción `ENABLE_COVERAGE` para medir cobertura, la descarga de Google Test 1.12.1 con `FetchContent`, la librería `project_lib` (el código fuente) y el ejecutable `run_tests` (las pruebas).
+`CMakeLists.txt`, en la raíz de `laboratorio-testing`. Define el estándar C++17, una opción `ENABLE_COVERAGE` para medir cobertura, la descarga de Google Test 1.12.1 con `FetchContent`, la librería `project_lib` y el ejecutable `run_tests`.
 
 ## Qué es CMake
 
-CMake es una herramienta que genera los archivos de compilación (por ejemplo, un `Makefile`) a partir de una descripción del proyecto en `CMakeLists.txt`. En vez de escribir a mano los comandos de `g++`, se declara qué archivos forman cada librería o ejecutable y CMake se encarga del resto.
+CMake es una herramienta que genera los archivos de compilación a partir de una descripción del proyecto en `CMakeLists.txt`. En vez de escribir a mano los comandos de `g++`, se declara qué archivos forman cada librería o ejecutable y CMake se encarga del resto.
 
 ## Para qué sirve Google Test
 
@@ -29,7 +29,7 @@ Google Test es un framework de pruebas unitarias para C++. Aporta macros como `T
 
 ## Qué significa automatizar pruebas
 
-Significa que las pruebas se ejecutan con un comando (o automáticamente, por ejemplo en GitHub Actions) sin que una persona tenga que probar cada caso a mano ni revisar los resultados a ojo. El programa compara los resultados reales contra los esperados y dice si todo está bien.
+Significa que las pruebas se ejecutan con un comando sin que una persona tenga que probar cada caso a mano ni revisar los resultados a ojo. El programa compara los resultados reales contra los esperados y dice si todo está bien.
 
 ## Qué significa que las pruebas sean repetibles
 
@@ -108,7 +108,7 @@ Después de agregarla se compiló y se ejecutó, y pasaron las 42 pruebas:
 
 ## Por qué estas pruebas se consideran funcionales
 
-Porque se diseñaron a partir del requisito (qué debe hacer el sistema con una nota) y no a partir del código interno de `letter_grade`. Cada caso parte de una entrada y un resultado esperado definidos por el requisito, y verifica el comportamiento visible sin importar cómo esté escrita la función por dentro. Si la función se reescribiera por completo, estos casos seguirían siendo válidos.
+Porque se diseñaron a partir del requisito y no a partir del código interno de `letter_grade`. Cada caso parte de una entrada y un resultado esperado definidos por el requisito, y verifica el comportamiento visible sin importar cómo esté escrita la función por dentro. Si la función se reescribiera por completo, estos casos seguirían siendo válidos.
 
 ## Preguntas de reflexión
 
@@ -116,10 +116,10 @@ Porque se diseñaron a partir del requisito (qué debe hacer el sistema con una 
 Una prueba unitaria verifica una pieza pequeña de código, como una función, de forma aislada. Una prueba funcional verifica que el sistema cumpla un requisito, desde el punto de vista de lo que debe hacer. En este laboratorio las pruebas de `letter_grade` pueden verse de ambas formas: son unitarias por lo que prueban, y funcionales por cómo se escogieron los casos.
 
 **2. ¿Por qué una prueba funcional se relaciona con requisitos?**
-Porque su resultado esperado sale del requisito, no del código. Así, si el código no cumple lo que se pidió, la prueba lo detecta, y cada caso se puede rastrear hasta una frase del requisito (por ejemplo, "menores a 60 son F").
+Porque su resultado esperado sale del requisito, no del código. Así, si el código no cumple lo que se pidió, la prueba lo detecta, y cada caso se puede rastrear hasta una frase del requisito.
 
 **3. ¿Qué significa pensar desde la perspectiva del usuario o del sistema?**
-Preguntarse qué espera quien usa la función o el sistema: qué entradas puede mandar, qué respuesta debería recibir y qué debería pasar con una entrada incorrecta. Se pone la atención en el comportamiento y no en cómo está implementado.
+Preguntarse qué espera quien usa la función o el sistema, qué entradas puede mandar, qué respuesta debería recibir y qué debería pasar con una entrada incorrecta. Se pone la atención en el comportamiento y no en cómo está implementado.
 
 **4. ¿Por qué la documentación de casos de prueba ayuda al equipo?**
 Porque deja por escrito qué se probó, con qué entradas y qué se espera. Eso permite revisar si faltan casos, repartir el trabajo, volver a ejecutar las pruebas sin depender de la memoria de una persona y entender el comportamiento esperado del sistema.
