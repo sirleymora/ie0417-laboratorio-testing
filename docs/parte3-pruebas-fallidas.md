@@ -97,7 +97,7 @@ Después de la corrección pasaron las 27 pruebas.
 
 ## Qué se aprendió
 
-Que una sola línea incorrecta basta para romper el comportamiento de una función, y que las pruebas lo detectan en segundos. También que las pruebas que fallaron (las dos de `is_even`) señalaron exactamente la función con el problema, mientras que el resto de las pruebas confirmaron que lo demás no se afectó.
+Que una sola línea incorrecta basta para romper el comportamiento de una función y que las pruebas lo detectan en segundos. También que las pruebas que fallaron señalaron exactamente la función con el problema, mientras que el resto de las pruebas confirmaron que lo demás no se afectó.
 
 ## Preguntas de reflexión
 
@@ -108,7 +108,7 @@ Mostró cuáles pruebas fallaron y en qué línea del archivo de pruebas. Como l
 El nombre de la prueba, el archivo y la línea donde falló, la expresión evaluada (`is_even(8)`), el valor esperado (`true`) y el valor obtenido (`false`), y un resumen de cuántas pruebas pasaron y cuántas fallaron.
 
 **3. ¿Por qué es importante ejecutar pruebas después de modificar código?**
-Porque así se detecta un error justo cuando se introduce, cuando el cambio es pequeño y todavía se recuerda qué se tocó. Si se espera, es más difícil saber cuál de varios cambios causó el problema.
+Porque así se detecta un error justo cuando se introduce, cuando el cambio es pequeño y todavía se recuerda qué se tocó. Si se espera es más difícil saber cuál de varios cambios causó el problema.
 
 **4. ¿Qué riesgo existe si se cambia código y no se ejecutan las pruebas?**
-Que el error pase sin detectarse y llegue a otras partes del sistema o a los usuarios, y que se rompa algo que antes funcionaba (una regresión). Mientras más tiempo pasa, más caro y difícil es encontrar su origen.
+Que el error pase sin detectarse y llegue a otras partes del sistema o a los usuarios y que se rompa algo que antes funcionaba. Mientras más tiempo pasa, más caro y difícil es encontrar su origen.
