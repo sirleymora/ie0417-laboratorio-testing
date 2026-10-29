@@ -12,21 +12,21 @@ Un caso borde es una entrada que está en el límite de lo que la función debe 
 
 | Archivo | Prueba | Qué verifica |
 |---|---|---|
-| `test_calculator.cpp` | `DivideNegativeNumbers` | `divide(-10, -2)` da `5` (dos negativos dan positivo) |
+| `test_calculator.cpp` | `DivideNegativeNumbers` | `divide(-10, -2)` da `5` dos negativos dan positivo |
 | `test_calculator.cpp` | `DividePositiveByNegative` | `divide(10, -2)` da `-5` |
 | `test_calculator.cpp` | `ZeroIsEven` | `is_even(0)` es `true` |
 | `test_string_utils.cpp` | `EmptyStringToUppercase` | cadena vacía da cadena vacía |
 | `test_string_utils.cpp` | `EmptyStringIsPalindrome` | la cadena vacía se considera palíndromo |
 | `test_string_utils.cpp` | `SingleLetterIsPalindrome` | una sola letra es palíndromo |
-| `test_grade_utils.cpp` | `MinimumValidGrade` | `letter_grade(0)` da `F` (límite inferior válido) |
-| `test_grade_utils.cpp` | `MaximumValidGrade` | `letter_grade(100)` da `A` (límite superior válido) |
-| `test_grade_utils.cpp` | `NegativeGradeThrowsException` | `letter_grade(-1)` lanza excepción (justo debajo del límite) |
+| `test_grade_utils.cpp` | `MinimumValidGrade` | `letter_grade(0)` da `F` límite inferior válido |
+| `test_grade_utils.cpp` | `MaximumValidGrade` | `letter_grade(100)` da `A` límite superior válido |
+| `test_grade_utils.cpp` | `NegativeGradeThrowsException` | `letter_grade(-1)` lanza excepción, justo debajo del límite |
 | `test_grade_utils.cpp` | `GradeBoundaryBetweenFAndD` | 59 es `F` y 60 es `D` |
 | `test_grade_utils.cpp` | `GradeBoundaryBetweenDAndC` | 69 es `D` y 70 es `C` |
 | `test_grade_utils.cpp` | `GradeBoundaryBetweenCAndB` | 79 es `C` y 80 es `B` |
 | `test_grade_utils.cpp` | `GradeBoundaryBetweenBAndA` | 89 es `B` y 90 es `A` |
 
-`NegativeGradeThrowsException` es a la vez un caso borde (justo debajo del mínimo) y un caso inválido (la nota debe rechazarse).
+`NegativeGradeThrowsException` es a la vez un caso borde y un caso inválido.
 
 ## Por qué esos casos son importantes
 
@@ -70,7 +70,7 @@ Pasaron las 40 pruebas (27 anteriores y 13 nuevas). Ninguna prueba falló, por l
 Porque los casos normales funcionan aunque el código tenga errores en los límites. Un `>` en lugar de `>=` pasa todas las pruebas con valores intermedios como 85 y falla solo con el valor exacto del límite.
 
 **2. ¿Qué es un caso borde?**
-Una entrada en el límite de lo permitido (el mínimo, el máximo, el valor justo antes o después de un límite) o una situación especial pero válida, como el cero o una cadena vacía.
+Una entrada en el límite de lo permitido o una situación especial pero válida, como el cero o una cadena vacía.
 
 **3. ¿Qué es un caso inválido?**
 Una entrada que no cumple los requisitos y que el sistema debe rechazar, por ejemplo una nota de `-1` o `120`, o dividir entre cero. La función no debe devolver un resultado normal: debe lanzar una excepción.
@@ -149,13 +149,13 @@ Si una prueba con datos aleatorios fallara con ciertos números, con una semilla
 ### Preguntas de reflexión
 
 **1. ¿Por qué las pruebas con datos aleatorios pueden ser peligrosas si no se controlan?**
-Porque pueden pasar en una ejecución y fallar en otra sin que el código haya cambiado. Un fallo que aparece de forma intermitente es difícil de reproducir, y se pierde la confianza en los resultados de las pruebas.
+Porque pueden pasar en una ejecución y fallar en otra sin que el código haya cambiado. Un fallo que aparece de forma intermitente es difícil de reproducir y se pierde la confianza en los resultados de las pruebas.
 
 **2. ¿Qué ventaja tiene usar una semilla fija?**
-Que los datos "aleatorios" son los mismos en cada ejecución. La prueba sigue cubriendo una variedad de valores, pero es determinista y repetible.
+Que los datos "aleatorios" son los mismos en cada ejecución. La prueba sigue cubriendo una variedad de valores.
 
 **3. ¿Cómo ayuda la semilla a reproducir errores?**
 Si la prueba falla, la semilla permite regenerar la misma secuencia de datos que causó el fallo y volver a ejecutar el caso exacto hasta encontrar y corregir el error.
 
 **4. ¿Por qué es importante documentar la semilla usada?**
-Porque sin ella no se puede reconstruir la ejecución. Otra persona, o uno mismo más adelante, necesita saber qué semilla se usó para reproducir los mismos datos, sobre todo si la prueba falla en un servidor como GitHub Actions.
+Porque sin ella no se puede reconstruir la ejecución. Otra persona o uno mismo más adelante, necesita saber qué semilla se usó para reproducir los mismos datos, sobre todo si la prueba falla en un servidor como GitHub Actions.
