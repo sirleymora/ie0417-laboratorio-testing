@@ -38,8 +38,6 @@ lcov --remove coverage.info '/usr/*' '*/_deps/*' '*/tests/*' --output-file cover
 genhtml coverage_filtered.info --rc branch_coverage=1 --output-directory coverage_report
 ```
 
-Con `lcov` 2.0 (Ubuntu 24.04) hace falta `--ignore-errors mismatch`; el detalle está en `docs/parte5-cobertura.md`.
-
 ## Documentación
 
 | Archivo | Contenido |
