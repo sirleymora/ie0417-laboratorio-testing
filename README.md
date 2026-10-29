@@ -1,6 +1,6 @@
 # Laboratorio: pruebas de software con Google Test, cobertura y GitHub Actions
 
-Laboratorio individual del curso IE0417 - Diseño de software para ingeniería (UCR). Proyecto en C++ con pruebas unitarias en Google Test, medición de cobertura con `gcov`/`lcov` y ejecución automática de las pruebas con GitHub Actions.
+Laboratorio del curso IE0417 - Diseño de software para ingeniería. Proyecto en C++ con pruebas unitarias en Google Test, medición de cobertura con `gcov`/`lcov` y ejecución automática de las pruebas con GitHub Actions.
 
 ## Estructura
 
