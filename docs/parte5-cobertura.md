@@ -6,7 +6,7 @@ Se compiló el proyecto con la opción `ENABLE_COVERAGE=ON`, se ejecutaron las 4
 
 ## Qué es cobertura de código
 
-La cobertura de código es una métrica que indica qué partes del código se ejecutaron mientras corrían las pruebas. Se puede medir por líneas (cuáles líneas se ejecutaron), por funciones (cuáles funciones se llamaron) y por ramas (cuáles caminos de cada decisión, como un `if`, se recorrieron). Sirve para encontrar código que ninguna prueba ejecuta.
+La cobertura de código es una métrica que indica qué partes del código se ejecutaron mientras corrían las pruebas. Se puede medir por líneas, por funciones. Sirve para encontrar código que ninguna prueba ejecuta.
 
 ## Comandos utilizados
 
@@ -35,7 +35,7 @@ lcov: ERROR: no valid records found in tracefile coverage.info
 genhtml: ERROR: cannot read file coverage_filtered.info!
 ```
 
-`lcov` 2.0 (la versión de Ubuntu 24.04) se confunde con las funciones que genera la macro `TEST(...)` de Google Test, porque el compilador reporta un final de función distinto al esperado. Como `geninfo` abortó, `coverage.info` quedó vacío y los comandos siguientes fallaron en cadena. No era un problema del código ni de las pruebas, que seguían pasando. Se corrigió agregando `--ignore-errors mismatch` al comando `lcov --capture`, y `--ignore-errors unused` al `lcov --remove`.
+`lcov` 2.0 se confunde con las funciones que genera la macro `TEST(...)` de Google Test, porque el compilador reporta un final de función distinto al esperado. Como `geninfo` abortó, `coverage.info` quedó vacío y los comandos siguientes fallaron en cadena. No era un problema del código ni de las pruebas, que seguían pasando. Se corrigió agregando `--ignore-errors mismatch` al comando `lcov --capture`, y `--ignore-errors unused` al `lcov --remove`.
 
 ## Porcentaje de cobertura obtenido
 
@@ -113,7 +113,7 @@ string_utils.cpp:24:    std::string reversed = normalized;
 string_utils.cpp:25:    std::reverse(reversed.begin(), reversed.end());
 ```
 
-Todas son ramas con bloque `e0`, que `lcov` usa para los caminos de excepción que el compilador genera alrededor de operaciones que podrían lanzar un error, como construir un `std::invalid_argument` o crear y copiar un `std::string` (por ejemplo, un `std::bad_alloc` si no hay memoria). La de `string_utils.cpp:25` (`std::reverse`) no lanza por sí misma: es el camino de limpieza que el compilador asocia a esa zona (destruir `reversed` si ocurre una excepción). Ninguna es una decisión de la lógica del programa: los `if`, los rangos de `letter_grade`, el vector vacío y la división entre cero sí están cubiertos. Con pruebas normales no se pueden recorrer estos caminos porque habría que simular que el sistema se queda sin memoria.
+Todas son ramas con bloque `e0`, que `lcov` usa para los caminos de excepción que el compilador genera alrededor de operaciones que podrían lanzar un error, como construir un `std::invalid_argument` o crear y copiar un `std::string`. La de `string_utils.cpp:25` (`std::reverse`) no lanza por sí misma, es el camino de limpieza que el compilador asocia a esa zona. Ninguna es una decisión de la lógica del programa, los `if`, los rangos de `letter_grade` y la división entre cero sí están cubiertos. Con pruebas normales no se pueden recorrer estos caminos porque habría que simular que el sistema se queda sin memoria.
 
 ## Evidencia del reporte HTML
 
@@ -132,18 +132,18 @@ Como las líneas y funciones ya están al 100%, estas pruebas no cambian el porc
 ## Preguntas de reflexión
 
 **1. ¿Qué significa tener 100% de cobertura?**
-Que cada elemento medido (línea, función o rama, según la métrica) se ejecutó al menos una vez durante las pruebas. Aquí hay 100% de líneas y funciones, pero solo 87.5% de ramas, así que "100%" depende de qué se esté midiendo.
+Que cada elemento medido se ejecutó al menos una vez durante las pruebas. Aquí hay 100% de líneas y funciones, pero solo 87.5% de ramas, así que "100%" depende de qué se esté midiendo.
 
 **2. ¿Tener 100% de cobertura garantiza que el programa no tiene errores?**
 No. Solo dice que el código se ejecutó, no que se verificó que el resultado fuera correcto ni que se probaron todas las entradas posibles. Por ejemplo, una prueba podría llamar a `letter_grade(95)` sin ninguna aserción, y la línea contaría como cubierta aunque nada se haya comprobado.
 
 **3. ¿Qué diferencia hay entre cobertura de líneas y cobertura de ramas?**
-La de líneas cuenta si cada línea se ejecutó. La de ramas cuenta si se recorrió cada camino posible de cada decisión (el caso verdadero y el falso de un `if`, cada condición de un `||`). Una línea con un `if` puede ejecutarse sin que se pruebe uno de sus dos caminos. Por eso aquí las líneas llegan a 100% y las ramas a 87.5%.
+La de líneas cuenta si cada línea se ejecutó. La de ramas cuenta si se recorrió cada camino posible de cada decisión. Una línea con un `if` puede ejecutarse sin que se pruebe uno de sus dos caminos. Por eso aquí las líneas llegan a 100% y las ramas a 87.5%.
 
 **4. ¿Por qué una línea ejecutada no necesariamente significa que fue bien probada?**
 Porque ejecutar una línea no es lo mismo que comprobar su resultado. Una prueba puede pasar por el código sin una aserción útil, o verificar un solo valor entre muchos posibles. La cobertura mide ejecución, no calidad de las verificaciones.
 
 **5. ¿Cómo puede ayudar la cobertura a mejorar las pruebas?**
-Señala qué código no está ejecutando ninguna prueba, para decidir qué caso falta. Aquí mostró que todas las decisiones de la lógica están cubiertas y que lo pendiente son caminos de excepción difíciles de provocar, y ayuda a decidir si vale la pena cubrirlos.
+Señala qué código no está ejecutando ninguna prueba, para decidir qué caso falta. Aquí mostró que todas las decisiones de la lógica están cubiertas y que lo pendiente son caminos de excepción difíciles de provocar y ayuda a decidir si vale la pena cubrirlos.
 
 ![Reporte de cobertura](img/cobertura-reporte.png)
